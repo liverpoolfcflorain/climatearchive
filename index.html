@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Climate Archive: Causes, Effects, Solutions and Timeline</title>
+<meta name="description" content="The Climate Archive explains what drives climate change, what it is doing to the world and Pakistan, and what can be done, with an interactive timeline map.">
+<meta property="og:title" content="The Climate Archive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f6f5;--card:#fff;--ink:#0e2230;--muted:#4d6371;--line:#d3e0e3;--world:#2a6fa3;--pk:#c4501f;--heat:#d03a22;--tint:#e4eef0;--sea:#dcebf2;--land:#b9cfc9;--shadow:0 1px 2px rgba(14,34,48,.08),0 8px 24px -8px rgba(14,34,48,.18);
+--head:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;--body:'Source Serif 4',Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#0a1721;--card:#12262f;--ink:#e7f0f2;--muted:#9db3bd;--line:#244250;--world:#6db3e0;--pk:#f28d5f;--heat:#ff6d50;--tint:#173441;--sea:#0f2a39;--land:#2c4b53;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -8px rgba(0,0,0,.6)}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0a1721;--card:#12262f;--ink:#e7f0f2;--muted:#9db3bd;--line:#244250;--world:#6db3e0;--pk:#f28d5f;--heat:#ff6d50;--tint:#173441;--sea:#0f2a39;--land:#2c4b53;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -8px rgba(0,0,0,.6)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.08rem/1.65 var(--body)}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.15;margin:0}
+.hero{position:relative;color:#fff;min-height:clamp(300px,52vw,460px);display:flex;align-items:flex-end;overflow:hidden;background:#0b1f2e}
+.stripes{position:absolute;inset:0;display:flex}.stripes i{flex:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,28,.15),rgba(6,18,28,.88))}
+.hero div.in{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:2rem 1.25rem 1.6rem;width:100%}
+.hero h1{font-weight:800;font-size:clamp(2.1rem,6.4vw,4.2rem);letter-spacing:-.025em;max-width:16ch}
+.hero p{max-width:58ch;margin:.8rem 0 0;color:#e2edf0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+[role=tablist]{max-width:1040px;margin:0 auto;display:flex;gap:.3rem;padding:.5rem 1.25rem;overflow-x:auto}
+[role=tab]{white-space:nowrap}
+.brand{font:800 1.15rem var(--head);letter-spacing:.01em;margin:0 0 .7rem;display:flex;align-items:center;gap:.5rem}.brand::before{content:"";width:26px;height:4px;border-radius:2px;background:var(--heat)}
+.sol-note{max-width:64ch;color:var(--muted);margin:1.6rem 0 0;font-size:.98rem}
+[role=tab]{font:700 1rem var(--head);background:none;border:0;border-radius:99px;color:var(--muted);padding:.55rem 1.2rem;cursor:pointer}
+[role=tab][aria-selected=true]{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:3px solid var(--world);outline-offset:2px}
+main{max-width:1040px;margin:0 auto;padding:1.8rem 1.25rem 3rem}
+section[hidden]{display:none}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:.4rem}
+h3{font-size:1.2rem}
+.lede{max-width:64ch;color:var(--muted);margin:.2rem 0 1.4rem}
+.sub{margin:2.4rem 0 .8rem;font-size:1.35rem}
+.stats{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin:0 0 1.6rem}
+.stat{background:var(--ink);color:var(--paper);border-radius:14px;padding:1rem 1.2rem}
+.stat b{display:block;font:800 2.2rem/1 var(--head)}.stat span{font-size:.92rem;opacity:.85}
+.grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.cd{position:relative;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 10%,var(--card)),var(--card) 60%);border:1px solid color-mix(in srgb,var(--c) 24%,var(--line));border-radius:20px;box-shadow:var(--shadow);padding:1.35rem 1.4rem 1.4rem;overflow:hidden;--c:var(--world);transition:transform .2s ease,box-shadow .2s ease}
+.cd:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(14,34,48,.08),0 18px 36px -12px color-mix(in srgb,var(--c) 45%,transparent)}
+.detail .cd:hover{transform:none}
+.cd.p{--c:var(--pk)}.cd.h{--c:var(--heat)}
+.cd::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 25%,transparent))}
+.cd .top{display:flex;justify-content:space-between;align-items:flex-start;gap:.9rem;margin-bottom:1rem}
+.cd .ic{width:54px;height:54px;border-radius:16px;font-size:1.75rem;margin:0;flex:none;background:color-mix(in srgb,var(--c) 18%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 32%,transparent)}
+.cd .big{margin:.2rem 0 0;font:800 1.45rem/1.1 var(--head);letter-spacing:-.01em;text-align:right;max-width:62%;overflow-wrap:anywhere}
+.cd h3{font-size:1.2rem;margin:0 0 .35rem}
+.cd p{color:var(--muted)}
+.ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;background:color-mix(in srgb,var(--c) 16%,transparent);margin-bottom:.7rem}
+.big{font:800 1.9rem/1 var(--head);color:var(--c);margin:.1rem 0 .2rem}
+.cd p{margin:.35rem 0 0;font-size:1rem;line-height:1.55}
+.two{display:grid;gap:1.4rem;grid-template-columns:1fr 1fr}
+.two>div>h3{font-size:1.4rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.two .grid{grid-template-columns:1fr}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--world)}.dot.p{background:var(--pk)}
+.steps{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));counter-reset:s}
+.steps div{background:var(--tint);border-radius:14px;padding:1rem 1.1rem;counter-increment:s}
+.steps div::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--heat);color:#fff;font:700 .95rem var(--head);margin-bottom:.5rem}
+.steps p{margin:.3rem 0 0;font-size:1rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:1rem 1.2rem}
+.panel svg{width:100%;height:auto;display:block}
+.callout{display:flex;gap:1rem;align-items:flex-start;background:var(--tint);border-left:6px solid var(--pk);border-radius:0 16px 16px 0;padding:1.1rem 1.3rem;margin-top:2rem}
+.callout .big{font-size:2.6rem}
+.bar{display:grid;grid-template-columns:minmax(140px,260px) 1fr 3rem;gap:.8rem;align-items:center;margin:.55rem 0;font:600 .95rem var(--head)}
+.bar .t{height:20px;background:var(--tint);border-radius:99px;overflow:hidden}
+.bar .t b{display:block;height:100%;background:linear-gradient(90deg,var(--world),var(--heat));border-radius:99px;animation:gr .9s ease-out both;transform-origin:left}
+@keyframes gr{from{transform:scaleX(0)}}
+.ctl{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:0 0 1rem}
+.chip,.pb{font:700 .92rem var(--head);border:2px solid var(--line);background:var(--card);color:var(--ink);padding:.45rem 1rem;border-radius:99px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pb{background:var(--heat);border-color:var(--heat);color:#fff}
+.sl{display:flex;align-items:center;gap:1rem;margin:0 0 1.2rem}
+.sl input{flex:1;accent-color:var(--heat);height:28px}
+.sl output{font:800 2rem var(--head);min-width:4.6rem;text-align:right}
+.maps{display:grid;gap:1.1rem;grid-template-columns:1.7fr 1fr}
+.maps.one{grid-template-columns:1fr}
+.maps h4{font-size:1rem;margin:0 0 .5rem;color:var(--muted)}
+.sea{fill:var(--sea)}.land{fill:var(--land);stroke:var(--paper);stroke-width:.4}
+.grat{stroke:var(--line);stroke-width:.25;opacity:.7}
+.pin{cursor:pointer;stroke:var(--paper);stroke-width:.8}.pin.w{fill:var(--world)}.pin.p{fill:var(--pk)}
+.pin.old{opacity:.55}
+.ring{fill:none;stroke-width:1.2;animation:pu 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pu{from{transform:scale(.6);opacity:1}to{transform:scale(2.4);opacity:0}}
+.lab{font:700 6px var(--head);fill:var(--ink);paint-order:stroke;stroke:var(--sea);stroke-width:2px}
+.lab.pk{font-size:13px;stroke:var(--card)}
+.river{fill:none;stroke:var(--world);stroke-width:2.2;stroke-linecap:round;opacity:.8}
+.detail{margin:1.1rem 0 1.6rem}
+.detail .cd{padding:1.4rem 1.6rem}.detail .yr{font:800 3rem/1 var(--head);color:var(--c)}
+.tag{display:inline-block;font:700 .8rem var(--head);padding:.2rem .7rem;border-radius:99px;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c);margin-left:.6rem;vertical-align:middle}
+.evs{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.evs button{all:unset;box-sizing:border-box;cursor:pointer;background:var(--card);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:12px;padding:.7rem .9rem;--c:var(--world)}
+.evs button.p{--c:var(--pk)}.evs button.on{box-shadow:var(--shadow);outline:2px solid var(--c)}.evs button.fut{opacity:.45}
+.evs b{font:800 1.2rem var(--head);color:var(--c);display:block}.evs span{font:600 .9rem/1.3 var(--head)}
+footer{max-width:1040px;margin:0 auto;padding:0 1.25rem 2rem;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.two,.maps{grid-template-columns:1fr}.bar{grid-template-columns:1fr 3rem}.bar>span:first-child{grid-column:1/-1}.callout{flex-direction:column}}
+@media (prefers-reduced-motion:reduce){.bar .t b,.ring{animation:none}.cd{transition:none}.cd:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="stripes" id="stripes" role="img" aria-label="Warming stripes from blue (cooler years) to red (hotter years)"></div>
+  <div class="in"><div class="brand">The Climate Archive</div><h1>A warming planet, and a country on the front line</h1>
+  <p>Why the climate is changing, what it is already doing to the world and to Pakistan, and how we got here, mapped event by event.</p></div>
+</header>
+<nav><div role="tablist" aria-label="Sections">
+  <button role="tab" id="t-causes" aria-controls="causes" aria-selected="true">Causes</button>
+  <button role="tab" id="t-effects" aria-controls="effects" aria-selected="false" tabindex="-1">Effects</button>
+  <button role="tab" id="t-solutions" aria-controls="solutions" aria-selected="false" tabindex="-1">Solutions</button>
+  <button role="tab" id="t-timeline" aria-controls="timeline" aria-selected="false" tabindex="-1">Timeline map</button>
+</div></nav>
+<main>
+<section id="causes" role="tabpanel" aria-labelledby="t-causes">
+  <h2>What causes climate change</h2>
+  <p class="lede">Heat-trapping gases have built up in the atmosphere because of human activity. The more we add, the more heat stays near the surface.</p>
+  <div class="stats">
+    <div class="stat"><b>280 → 420+</b><span>parts per million of CO₂, before industry vs today</span></div>
+    <div class="stat"><b>+1.2°C</b><span>global warming since the late 1800s (decade average)</span></div>
+    <div class="stat"><b>~1%</b><span>of global emissions come from Pakistan, home to over 3% of people</span></div>
+  </div>
+  <h3 class="sub" style="margin-top:0">How the greenhouse effect works</h3>
+  <div class="steps">
+    <div><h4>Sunlight warms Earth</h4><p>Sunlight passes through the atmosphere and heats land and oceans.</p></div>
+    <div><h4>Earth sends heat back out</h4><p>The surface radiates heat as infrared energy toward space.</p></div>
+    <div><h4>Gases hold some of it in</h4><p>Carbon dioxide, methane and other gases absorb that heat and re-emit it downward. More gas means more trapped heat.</p></div>
+  </div>
+  <h3 class="sub">The main sources</h3>
+  <div class="grid" id="causeCards"></div>
+  <h3 class="sub">Carbon dioxide keeps climbing</h3>
+  <div class="panel"><svg id="co2" viewBox="0 0 640 250" role="img" aria-label="Line chart of atmospheric carbon dioxide rising from 315 ppm in 1958 to about 422 ppm in 2024"></svg></div>
+  <h3 class="sub">Where emissions come from, by gas</h3>
+  <div id="bars"></div>
+  <div class="callout"><div class="big">1%</div><div><h3>Pakistan’s part in the problem</h3>
+    <p>Pakistan’s emissions come mainly from energy, agriculture and livestock, and transport. Per person they are a small fraction of those in wealthy countries, yet Pakistan ranks among the most climate-vulnerable nations. That gap is why it argues for climate justice and funding for loss and damage.</p></div></div>
+</section>
+
+<section id="effects" role="tabpanel" aria-labelledby="t-effects" hidden>
+  <h2>What climate change is doing</h2>
+  <p class="lede">2024 was the first calendar year more than 1.5°C above pre-industrial levels. Every extra fraction of a degree raises the risk of extreme events.</p>
+  <div class="two">
+    <div><h3><span class="dot"></span>Across the world</h3><div class="grid" id="effW"></div></div>
+    <div><h3><span class="dot p"></span>In Pakistan</h3><div class="grid" id="effP"></div></div>
+  </div>
+</section>
+
+<section id="solutions" role="tabpanel" aria-labelledby="t-solutions" hidden>
+  <h2>What can be done</h2>
+  <p class="lede">Cutting emissions (mitigation) stops the problem growing. Preparing for impacts (adaptation) protects people from what is already locked in. Both are needed.</p>
+  <div class="two">
+    <div><h3><span class="dot"></span>Across the world</h3><div class="grid" id="solW"></div></div>
+    <div><h3><span class="dot p"></span>In Pakistan</h3><div class="grid" id="solP"></div></div>
+  </div>
+  <h3 class="sub">What you can do</h3>
+  <div class="steps">
+    <div><h4>Use less energy</h4><p>Efficient appliances, LED lighting and good insulation or shading cut bills and emissions together.</p></div>
+    <div><h4>Move and eat smarter</h4><p>Walk, cycle or share rides where you can, and waste less food, since rotting food releases methane.</p></div>
+    <div><h4>Plant, prepare and speak up</h4><p>Plant native trees, know your local flood and heat warnings, and ask leaders for climate action and funding.</p></div>
+  </div>
+  <p class="sol-note">Climate finance matters as much as technology: poorer countries need money to adapt and to recover from losses they did little to cause.</p>
+</section>
+
+<section id="timeline" role="tabpanel" aria-labelledby="t-timeline" hidden>
+  <h2>The timeline, plotted</h2>
+  <p class="lede">Press play or drag the slider to watch events appear where they happened. Select any pin or card for details.</p>
+  <div class="ctl">
+    <button class="pb" id="play" aria-label="Play timeline">▶ Play</button>
+    <button class="chip" data-f="both" aria-pressed="true">World and Pakistan</button>
+    <button class="chip" data-f="w" aria-pressed="false">World</button>
+    <button class="chip" data-f="p" aria-pressed="false">Pakistan</button>
+  </div>
+  <div class="sl"><input type="range" id="rng" min="0" max="0" value="0" aria-label="Move through events"><output id="yr">1824</output></div>
+  <div class="maps" id="maps">
+    <div class="panel" id="wp"><h4>World</h4><svg id="wm" viewBox="0 5 360 135" role="img" aria-label="World map with event pins"></svg></div>
+    <div class="panel" id="pp"><h4>Pakistan</h4><svg id="pm" viewBox="0 0 360 345" role="img" aria-label="Pakistan map with event pins"></svg></div>
+  </div>
+  <div class="detail" id="detail" aria-live="polite"></div>
+  <div class="evs" id="evs"></div>
+</section>
+</main>
+<footer><b>The Climate Archive.</b> The warming stripes in the header are illustrative, not real temperature data. Figures are rounded and based on IPCC, WMO, NOAA, World Bank and Government of Pakistan reporting. The maps are simplified drawings, not survey-accurate. Check original sources before citing.</footer>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+// Stripes
+var h='';for(var i=0;i<80;i++){var t=Math.pow(i/79,1.5)*.85+((Math.sin(i*12.9898)*43758.5453)%1+1)%1*.15;h+='<i style="background:rgb('+Math.round(47+t*153)+','+Math.round(111-t*61)+','+Math.round(159-t*129)+')"></i>'}
+$('stripes').innerHTML=h;
+// Cards
+function card(c,x){return '<div class="cd '+(c||'')+'"><div class="top"><div class="ic">'+x[0]+'</div><div class="big">'+x[2]+'</div></div><h3>'+x[1]+'</h3><p>'+x[3]+'</p></div>'}
+var cause=[['🏭','Burning fossil fuels','Most CO₂','Coal, oil and gas for power, transport, heating and industry release the largest share of carbon dioxide.'],
+['🌲','Deforestation and land use','~11%','Cutting forests releases stored carbon and removes the trees that would absorb more.'],
+['🐄','Agriculture and livestock','80×','Methane from cattle, rice paddies and manure traps about 80 times more heat than CO₂ over 20 years. Fertilisers add nitrous oxide.'],
+['🚗','Transport','~15%','Cars, trucks, ships and planes burning oil make up roughly a seventh of global greenhouse gas emissions.'],
+['🧱','Industry and waste','~8%','Cement alone makes about 8% of CO₂ emissions. Landfills give off methane as waste rots.']];
+$('causeCards').innerHTML=cause.map(function(x){return card('h',x)}).join('');
+var ew=[['🌡️','Hotter, longer heatwaves','+1.2°C','Record heat now strikes every continent, straining health, crops and power grids.'],
+['🌊','Rising seas','~20 cm','Oceans have risen about 20 cm since 1900 as ice melts and warm water expands.'],
+['🧊','Melting ice','Every year','Glaciers and polar ice sheets keep shrinking, adding to sea level rise and changing river flows.'],
+['⛈️','Heavier storms, deeper droughts','+7% rain','Air holds about 7% more moisture per 1°C of warming, so rain falls harder and dry spells last longer.'],
+['🌾','Food and water stress','Crop losses','Heat, drought and floods cut yields and strain water supplies, pushing up food prices and driving people to migrate.'],
+['🪸','Ocean and wildlife damage','~30% more acid','Seawater acidity is up about 30%, coral reefs are bleaching and species are moving or dying out.']];
+var ep=[['🌧️','Catastrophic floods','33 million','In 2022 floods covered about a third of Pakistan and caused around US$30 billion in damage and losses. 2010 and 2025 brought more.'],
+['🔥','Extreme heat','50°C+','Cities like Jacobabad regularly pass 50°C. The 2015 Karachi heatwave killed over a thousand people.'],
+['🏔️','Melting glaciers','7,000+','Pakistan holds over 7,000 glaciers. Faster melt brings glacial lake floods in the north and threatens Indus water in the long run.'],
+['🌾','Water, food and farms','~¼ of GDP','Agriculture runs on the Indus system. Erratic monsoons, heat and floods hit wheat, rice and cotton and rural incomes.'],
+['🏥','Health and displacement','1,700+ deaths','The 2022 floods killed over 1,700 people and left millions homeless, followed by outbreaks of malaria, dengue and waterborne disease.'],
+['🌫️','Smog and the coast','AQI 1,000+','Winter smog in Lahore has reached hazardous levels, while seawater creeps into the Indus delta.']];
+var sw=[['☀️','Clean power','Solar + wind','Solar and wind are now the cheapest new electricity in many countries, and replace coal and gas plants.'],
+['🔌','Electrify transport and heating','EVs','Electric vehicles, trains and heat pumps cut oil and gas use when the grid runs on clean power.'],
+['🌳','Protect forests and soils','Nature','Stopping deforestation and restoring land keeps carbon locked away and shields communities from floods.'],
+['💨','Cut methane fast','Quick win','Methane fades in about a decade, so fixing leaks and landfill gas slows warming sooner than almost anything else.']];
+var sp=[['☀️','Rooftop solar','Rapid uptake','Households, farms and businesses are installing panels in large numbers, easing reliance on costly imported fuel.'],
+['🌳','Tree planting','10 billion','The Ten Billion Tree Tsunami restores hills and watersheds, which helps slow runoff and cool communities.'],
+['💧','Flood-ready design','Adapt','Early warnings, raised homes, better drainage and river-space management reduce losses when floods return.'],
+['💰','Climate finance','Loss and damage','Pakistan pushes for funding from major emitters to rebuild and adapt, and for fair access to green finance.']];
+$('solW').innerHTML=sw.map(function(x){return card('',x)}).join('');
+$('solP').innerHTML=sp.map(function(x){return card('p',x)}).join('');
+$('effW').innerHTML=ew.map(function(x){return card('',x)}).join('');
+$('effP').innerHTML=ep.map(function(x){return card('p',x)}).join('');
+// CO2 chart
+var d=[[1958,315],[1970,325],[1980,339],[1990,354],[2000,369],[2010,389],[2020,414],[2024,422]];
+function X(y){return 50+(y-1958)/66*560}function Y(v){return 210-(v-300)/130*180}
+var s='';[300,350,400].forEach(function(v){s+='<line x1="50" x2="610" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)"/><text x="44" y="'+(Y(v)+4)+'" text-anchor="end" font-size="12" fill="var(--muted)">'+v+'</text>'});
+s+='<path d="M'+d.map(function(p){return X(p[0])+' '+Y(p[1])}).join('L')+'L610 210L50 210Z" fill="var(--heat)" opacity=".15"/><polyline fill="none" stroke="var(--heat)" stroke-width="3.5" stroke-linejoin="round" points="'+d.map(function(p){return X(p[0])+','+Y(p[1])}).join(' ')+'"/>';
+d.forEach(function(p,i){if(i%2==0||i==7)s+='<circle cx="'+X(p[0])+'" cy="'+Y(p[1])+'" r="4.5" fill="var(--heat)"/><text x="'+X(p[0])+'" y="232" text-anchor="middle" font-size="12" fill="var(--muted)">'+p[0]+'</text>'});
+s+='<text x="'+(X(2024)-8)+'" y="'+(Y(422)-10)+'" text-anchor="end" font-size="13" font-weight="700" fill="var(--ink)">422 ppm</text><text x="52" y="20" font-size="12" fill="var(--muted)">CO₂ parts per million (Mauna Loa)</text>';
+$('co2').innerHTML=s;
+var bars=[['CO₂ from fossil fuels and industry',65],['Methane',16],['CO₂ from forests and land use',11],['Nitrous oxide',6],['Fluorinated gases',2]];
+$('bars').innerHTML=bars.map(function(x){return '<div class="bar"><span>'+x[0]+'</span><span class="t"><b style="width:'+x[1]+'%"></b></span><span>'+x[1]+'%</span></div>'}).join('');
+
+// Maps
+var NS='http://www.w3.org/2000/svg';
+function poly(pts,fx){return '<polygon class="land" points="'+pts.map(function(p){return fx(p[0],p[1])}).join(' ')+'"/>'}
+var wx=function(a,b){return (a+180)+','+(90-b)};
+var land=[
+[[-168,66],[-141,70],[-110,72],[-82,70],[-62,60],[-55,50],[-67,45],[-76,35],[-81,25],[-97,26],[-105,20],[-95,16],[-85,10],[-79,8],[-90,14],[-105,23],[-117,32],[-124,40],[-125,49],[-135,58],[-150,60],[-165,62]],
+[[-80,8],[-60,10],[-50,0],[-35,-6],[-40,-22],[-58,-38],[-66,-55],[-74,-50],[-72,-30],[-70,-18],[-81,-5]],
+[[-10,36],[-9,43],[0,50],[10,56],[25,70],[60,70],[100,78],[140,72],[180,66],[160,55],[142,46],[130,35],[122,30],[120,22],[108,16],[105,9],[100,3],[98,15],[90,22],[80,10],[73,18],[67,25],[57,25],[50,30],[56,22],[44,13],[36,28],[34,31],[28,36],[22,38],[12,42],[3,43],[-5,36]],
+[[-17,21],[-6,35],[10,37],[32,31],[43,12],[51,11],[40,-15],[33,-27],[19,-35],[12,-17],[9,4],[-8,4],[-17,14]],
+[[114,-22],[130,-12],[142,-11],[153,-27],[146,-39],[135,-34],[115,-34]],
+[[-55,60],[-20,70],[-20,82],[-60,82],[-70,76]],
+[[130,31],[141,38],[142,45],[135,35]]];
+var g='<rect class="sea" x="0" y="5" width="360" height="135"/>';
+for(var la=-60;la<=80;la+=30)g+='<line class="grat" x1="0" x2="360" y1="'+(90-la)+'" y2="'+(90-la)+'"/>';
+for(var lo=-150;lo<=150;lo+=30)g+='<line class="grat" y1="5" y2="140" x1="'+(lo+180)+'" x2="'+(lo+180)+'"/>';
+$('wm').dataset.base=g+land.map(function(p){return poly(p,wx)}).join('');
+var px=function(a,b){return ((a-60)*20)+','+((38-b)*23)};
+var pk=[[61.6,25.2],[66.9,24.8],[67.4,23.8],[68.2,23.7],[70,24.2],[71,25.7],[70.5,28],[72.9,29.3],[74.5,31],[75,32.5],[74.5,34],[75.5,35.5],[77,35.5],[76,36.9],[74.5,37],[72.5,36.8],[71.3,36],[71,34.5],[70.2,33.9],[69.3,31.9],[66.4,29.9],[64.2,29.6],[62.5,29.4],[61,29.9],[60.9,29],[61.6,26.2]];
+var riv=[[75.5,35.3],[72.7,34.2],[71.9,32.5],[70.8,29.5],[68.3,27],[67.8,25.4],[67.5,24]];
+$('pm').dataset.base='<rect class="sea" width="360" height="345"/>'+poly(pk,px)+'<polyline class="river" points="'+riv.map(function(p){return px(p[0],p[1])}).join(' ')+'"/>'+
+[['Karachi',66.9,24.8],['Lahore',74.35,31.55],['Islamabad',73.05,33.7]].map(function(c){return '<text class="lab pk" x="'+(px(c[1],c[2]).split(',')[0]-0+10)+'" y="'+(px(c[1],c[2]).split(',')[1]-0+4)+'" opacity=".6">'+c[0]+'</text>'}).join('');
+
+// Events: year, scope, place, lon, lat, title, text
+var ev=[
+[1824,'w','Paris',2.3,48.9,'Fourier describes the greenhouse effect','Joseph Fourier shows that Earth’s atmosphere keeps the planet warmer than it would otherwise be.'],
+[1859,'w','London',-0.1,51.5,'Tyndall measures heat trapping','John Tyndall proves in the lab that carbon dioxide and water vapour absorb heat.'],
+[1896,'w','Stockholm',18.1,59.3,'Arrhenius links coal to warming','Svante Arrhenius calculates that burning coal could raise global temperatures.'],
+[1958,'w','Mauna Loa',-155.6,19.5,'The Keeling Curve begins','Continuous carbon dioxide readings start at about 315 ppm and show a steady yearly rise.'],
+[1988,'w','Geneva',6.1,46.2,'The IPCC is created','The UN sets up the Intergovernmental Panel on Climate Change to assess the science for governments.'],
+[1992,'w','Rio de Janeiro',-43.2,-22.9,'Rio Earth Summit','Countries, Pakistan among them, adopt the UN Framework Convention on Climate Change.'],
+[1997,'w','Kyoto',135.8,35,'Kyoto Protocol','Wealthy nations accept binding emission limits. Developing countries like Pakistan join without caps.'],
+[2007,'w','Oslo',10.7,59.9,'IPCC shares the Nobel Peace Prize','The IPCC and Al Gore are honoured for building and spreading knowledge about human-made climate change.'],
+[2010,'p','Sindh and Khyber Pakhtunkhwa',68.5,27.5,'Super floods','Monsoon floods affect around 20 million people and kill nearly 2,000.'],
+[2012,'p','Islamabad',73.05,33.7,'National Climate Change Policy','Pakistan adopts its first national policy on climate adaptation and mitigation.'],
+[2015,'w','Paris',2.3,48.9,'Paris Agreement','195 countries agree to hold warming well below 2°C and aim for 1.5°C.'],
+[2015,'p','Karachi',67,24.86,'Karachi heatwave','Extreme heat kills more than a thousand people in the city within days.'],
+[2016,'p','Islamabad',73.05,33.7,'Pakistan ratifies Paris','Pakistan formally joins the agreement and starts national climate planning.'],
+[2016,'w','Mauna Loa',-155.6,19.5,'400 ppm passed for good','CO₂ stays above 400 parts per million, a level not seen for millions of years.'],
+[2019,'p','Khyber Pakhtunkhwa',71.5,34,'Ten Billion Tree Tsunami','A national tree-planting programme expands the earlier Billion Tree project.'],
+[2021,'p','Islamabad',73.05,33.7,'Updated climate pledge','Pakistan commits to cut projected 2030 emissions by up to 50%, mostly with international support.'],
+[2022,'p','Jacobabad',68.44,28.28,'Record spring heat','A severe pre-monsoon heatwave pushes temperatures past 50°C in Sindh and Balochistan.'],
+[2022,'p','Hunza, Gilgit-Baltistan',74.8,36.4,'Glacier-fed floods in the north','Glacial lake outburst floods damage bridges, homes and farmland in Hunza and nearby valleys.'],
+[2022,'p','Sindh',67.8,26.7,'Floods cover a third of the country','About 33 million people are affected and damage and losses reach around US$30 billion.'],
+[2022,'w','Sharm el-Sheikh',34.3,27.9,'COP27 agrees a loss and damage fund','Pakistan, then chair of the G77, helps push for money to help vulnerable countries recover.'],
+[2023,'w','Dubai',55.3,25.2,'COP28 calls for a fossil fuel transition','Countries agree to transition away from fossil fuels in energy systems and to triple renewable capacity by 2030.'],
+[2024,'w','Global',-30,0,'First year above 1.5°C','2024 is the hottest year on record and the first calendar year more than 1.5°C above pre-industrial levels.'],
+[2024,'w','Baku',49.9,40.4,'COP29 sets a new finance goal','Countries agree to raise at least US$300 billion a year for developing countries by 2035.'],
+[2024,'p','Lahore',74.35,31.55,'Lahore smog crisis','Air quality reaches some of the worst readings ever recorded and schools close.'],
+[2025,'p','Punjab',71.5,30.2,'Monsoon floods on the Punjab rivers','Swollen rivers force mass evacuations and destroy crops and homes.']];
+var f='both',cur=0,list=ev,timer=null;
+function filt(){list=ev.filter(function(e){return f==='both'||e[1]===f});cur=Math.min(cur,list.length-1);$('rng').max=list.length-1;$('rng').value=cur;$('wp').hidden=f==='p';$('pp').hidden=f==='w';$('maps').className='maps'+(f==='both'?'':' one')}
+function pins(svgId,sc,pt,r){
+  var s=$(svgId).dataset.base,sel=list[cur];
+  list.forEach(function(e,i){if(e[1]!==sc||i>cur)return;var xy=pt(e[3],e[4]).split(',');
+    var on=i===cur;
+    if(on)s+='<circle class="ring" cx="'+xy[0]+'" cy="'+xy[1]+'" r="'+r+'" stroke="var(--'+(sc==='w'?'world':'pk')+')"/>';
+    s+='<circle class="pin '+sc+(on?'':' old')+'" data-i="'+i+'" cx="'+xy[0]+'" cy="'+xy[1]+'" r="'+(on?r*1.3:r)+'" tabindex="0" role="button" aria-label="'+e[0]+': '+e[5]+'"/>'});
+  if(sel&&sel[1]===sc){var q=pt(sel[3],sel[4]).split(',');var left=+q[0]>(sc==='w'?250:230);s+='<text class="lab'+(sc==='p'?' pk':'')+'" x="'+(+q[0]+(left?-r*2:r*2))+'" y="'+(+q[1]+2)+'" text-anchor="'+(left?'end':'start')+'">'+sel[2]+'</text>'}
+  $(svgId).innerHTML=s}
+function draw(){
+  var e=list[cur];$('yr').textContent=e[0];$('rng').value=cur;
+  pins('wm','w',wx,3.4);pins('pm','p',px,8);
+  $('detail').innerHTML='<div class="cd '+(e[1]==='p'?'p':'')+'"><div class="yr">'+e[0]+'<span class="tag">'+(e[1]==='w'?'World':'Pakistan')+' · '+e[2]+'</span></div><h3 style="margin:.6rem 0 .2rem;font-size:1.5rem">'+e[5]+'</h3><p style="font-size:1.08rem">'+e[6]+'</p></div>';
+  $('evs').innerHTML=list.map(function(x,i){return '<button class="'+x[1]+(i===cur?' on':'')+(i>cur?' fut':'')+'" data-i="'+i+'"><b>'+x[0]+'</b><span>'+x[5]+'</span></button>'}).join('')}
+function go(i){cur=+i;draw()}
+document.addEventListener('click',function(e){var t=e.target.closest('[data-i]');if(t)go(t.dataset.i)});
+document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('pin')){e.preventDefault();go(e.target.dataset.i)}});
+$('rng').addEventListener('input',function(){go(this.value)});
+document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){f=c.dataset.f;document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c)});stop();filt();draw()})});
+function stop(){if(timer){clearInterval(timer);timer=null}$('play').textContent='▶ Play'}
+$('play').addEventListener('click',function(){if(timer)return stop();if(cur>=list.length-1)go(0);$('play').textContent='❚❚ Pause';timer=setInterval(function(){if(cur>=list.length-1)return stop();go(cur+1)},2200)});
+filt();draw();
+
+// Tabs
+var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+function show(id,fo){tabs.forEach(function(t){var on=t.getAttribute('aria-controls')===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;$(t.getAttribute('aria-controls')).hidden=!on;if(on&&fo)t.focus()});if(id!=='timeline')stop()}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){var id=t.getAttribute('aria-controls');show(id);history.replaceState(null,'','#'+id)});
+t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d)show(tabs[(i+d+tabs.length)%tabs.length].getAttribute('aria-controls'),true)})});
+var hh=location.hash.slice(1);if(['causes','effects','solutions','timeline'].indexOf(hh)>-1)show(hh);
+})();
+</script>
+</body>
+</html>
